@@ -104,22 +104,23 @@ while(counter < size) {
 //console.log(board);
 
 //display board
-
+/*
 var i = 0;
 while(i < size) {
   console.log(board.searchNodeAt(counter).data);
   i++;
 }
+*/
 
-/*
-var i = 0;
-while(i < 4 {
-  console.log(board.searchNodeAt(counter).data);
-  console.log("   ");
-  console.log(board.searchNodeAt(counter+4).data);
+var i = 1;
+var max = size/2 + 1;
+while(i < max) {
+  console.log(board.searchNodeAt(i).data + '  ' + board.searchNodeAt(i+4).data);
+  //console.log('   ');
+  //console.log(board.searchNodeAt(i+4).data);
   i++;
 }
-*/
+
 //console.log(board.searchNodeAt(1).data);
 
 
