@@ -1,5 +1,16 @@
 console.log('Hello Git');
+console.log('Tell us tutorials you wanna see!')
 
-//linked (header) files, javascript style
-  //linke board.js to Mancala
-//write, a display board function, and a clear screen funciotn (library?)
+class Shape {
+    constructor (id, x, y) {
+        this.id = id
+        this.move(x, y)
+    }
+    move (x, y) {
+        this.x = x
+        this.y = y
+    }
+};
+
+var square = new Shape (1, 1, 1);
+console.log(square);
