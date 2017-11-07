@@ -117,10 +117,22 @@ class Board {
         i++;
       }
     };
+
+    move (player, pos) {
+      this.board.searchNodeAt(pos).data = 0;
+      this.board.searchNodeAt(pos).next.data += 1;
+    };
+
+    clear () {
+      console.log(' ');
+    };
 }
 
 ////////////////////main statement basically/////////////////////////////
 var manc = new Board(8);
+manc.display();
+manc.move(1,3);
+manc.clear();
 manc.display();
 
 
