@@ -93,41 +93,59 @@ SinglyList.prototype.remove = function(position) {
     return deletedNode;
 };
 
+////////////////////end linked list//////////////////////////////
 
-var size = 8;
-var counter = 0;
-board = new SinglyList();
-while(counter < size) {
-  board.add(4);
-  counter++;
+class Board {
+    constructor (sz) {
+        this.sz = sz
+        //this.foo = new SinglyList()
+        var size = 8;
+        var counter = 0;
+        this.board = new SinglyList();
+        while(counter < size) {
+          this.board.add(4);
+          counter++;
+        }
+    };
+
+    display () {
+      var size = 8;
+      var i = 1;
+      var max = size/2 + 1;
+      while(i < max) {
+        console.log(this.board.searchNodeAt(i).data + '  ' + this.board.searchNodeAt(i+4).data);
+        i++;
+      }
+    };
+}
+
+////////////////////main statement basically/////////////////////////////
+var manc = new Board(8);
+manc.display();
+
+
+////////////////////////old code///////////////////////////////////////
+/*
+function createBoard() {
+  var size = 8;
+  var counter = 0;
+  var board = new SinglyList();
+  while(counter < size) {
+    board.add(4);
+    counter++;
+  }
+  return board;
 };
-//console.log(board);
 
-//display board
-/*
-var i = 0;
-while(i < size) {
-  console.log(board.searchNodeAt(counter).data);
-  i++;
+function display(board) {
+  var size = 8;
+  var i = 1;
+  var max = size/2 + 1;
+  while(i < max) {
+    console.log(board.searchNodeAt(i).data + '  ' + board.searchNodeAt(i+4).data);
+    i++;
+  }
 }
 */
 
-var i = 1;
-var max = size/2 + 1;
-while(i < max) {
-  console.log(board.searchNodeAt(i).data + '  ' + board.searchNodeAt(i+4).data);
-  //console.log('   ');
-  //console.log(board.searchNodeAt(i+4).data);
-  i++;
-}
-
-//console.log(board.searchNodeAt(1).data);
-
-
-/*
-foo = new SinglyList();
-foo.add(1);
-console.log("--------------------");
-console.log("foo\n")
-console.log(foo);
-*/
+//main
