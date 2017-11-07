@@ -97,25 +97,26 @@ SinglyList.prototype.remove = function(position) {
 
 class Board {
     constructor (sz) {
-        this.sz = sz
-        //this.foo = new SinglyList()
-        var size = 8;
+        this.sz = sz+2;
         var counter = 0;
         this.board = new SinglyList();
-        while(counter < size) {
+        this.board.add(0);
+        while(counter < sz) {
           this.board.add(4);
           counter++;
         }
+        this.board.add(0);
     };
 
     display () {
-      var size = 8;
-      var i = 1;
-      var max = size/2 + 1;
+      var i = 2;
+      var max = this.sz/2 + 1;
+      console.log('  ' + this.board.searchNodeAt(1).data + ' ');
       while(i < max) {
         console.log(this.board.searchNodeAt(i).data + '  ' + this.board.searchNodeAt(i+4).data);
         i++;
       }
+      console.log(' ' + this.board.searchNodeAt(this.sz).data + ' ');
     };
 
     move (player, pos) {
@@ -129,11 +130,13 @@ class Board {
 }
 
 ////////////////////main statement basically/////////////////////////////
-var manc = new Board(8);
+var manc = new Board(12);
 manc.display();
 manc.move(1,3);
 manc.clear();
 manc.display();
+
+//make move() super generic, to incorporate all variations of the rules
 
 
 ////////////////////////old code///////////////////////////////////////
