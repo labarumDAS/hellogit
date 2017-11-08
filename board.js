@@ -98,54 +98,57 @@ SinglyList.prototype.remove = function(position) {
 ////////////////////end linked list//////////////////////////////
 
 export class Board {
+  //get rid of hardcoded numbers
     constructor (sz) {
-        this.sz = sz+2;
-        var counter = 0;
-        this.board = new SinglyList();
-        this.board.add(0);
-        while(counter < sz) {
-          this.board.add(4);
-          counter++;
-        }
-        this.board.add(0);
+      var firstpot = 7;
+      this.sz = sz*2;
+      var counter = 1;
+      this.board = new SinglyList();
+      while(counter <= 6) {
+        this.board.add(4);
+        counter++;
+      }
+      this.board.add(0);
+      while(counter <= 12) {
+        this.board.add(4);
+        counter++;
+      }
+      this.board.add(0);
     };
 
     display () {
-      var i = 2;
-      var max = this.sz/2 + 1;
-      console.log('  ' + this.board.searchNodeAt(1).data + ' ');
-      while(i < max) {
-        console.log(this.board.searchNodeAt(i).data + '  ' + this.board.searchNodeAt(i+4).data);
-        i++;
+      //arguments and parameters need to be genralized from sz
+      //get rid of hardcoded numbers
+      var i = 1;
+      var j=1;
+      var firstPot = 7;
+      var secondPot = 14;
+      //var max = this.sz/2;
+      console.log('  ' + this.board.searchNodeAt(secondPot).data + ' ');
+      while(i < 6) {
+        console.log(this.board.searchNodeAt(i).data + '  ' + this.board.searchNodeAt(secondPot-j).data);
+        i++; j++;
       }
-      console.log(' ' + this.board.searchNodeAt(this.sz).data + ' ');
+      console.log(' ' + this.board.searchNodeAt(firstPot).data + ' ');
     };
 
     move (player, pos) {
-      //this is definitely an inefficient use of "next"
-      //should be re-written for speed
       var count = this.board.searchNodeAt(pos).data;
+      var currentNode = this.board.searchNodeAt(pos);
+      //(pos +i) can do it, but not good use of "next"
       this.board.searchNodeAt(pos).data = 0;
-      var i =1;
       while (count > 0) {
-
-        //this.board.searchNodeAt(pos).next.data +=1;
-        this.board.searchNodeAt(pos+i).data +=1;
-
-        //var currentNode = this.board.head;
-        //currentNode = this.board.next;
-          //this.board.curentNode = this.board.currentNode.next
-          //this.board.currentNode.data += 1;
-          //this.data += 1;
+        currentNode = currentNode.next;
+        currentNode.data +=1;
           count--;
-          i++;
       };
 
       /*
       //recurse if there beans & its on your side
-      if (this.board.searchNodeAt(pos + i).data > 0) {
+      //fix numbering convention first
+      if (currentNode.data > 0 && side(player) ) {
         this.display();
-        return this.move(player, pos + i);
+        return this.move(player, index_of_currentNode());
       }
       */
 
