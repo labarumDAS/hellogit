@@ -122,8 +122,34 @@ export class Board {
     };
 
     move (player, pos) {
+      //this is definitely an inefficient use of "next"
+      //should be re-written for speed
+      var count = this.board.searchNodeAt(pos).data;
       this.board.searchNodeAt(pos).data = 0;
-      this.board.searchNodeAt(pos).next.data += 1;
+      var i =1;
+      while (count > 0) {
+
+        //this.board.searchNodeAt(pos).next.data +=1;
+        this.board.searchNodeAt(pos+i).data +=1;
+
+        //var currentNode = this.board.head;
+        //currentNode = this.board.next;
+          //this.board.curentNode = this.board.currentNode.next
+          //this.board.currentNode.data += 1;
+          //this.data += 1;
+          count--;
+          i++;
+      };
+
+      /*
+      //recurse if there beans & its on your side
+      if (this.board.searchNodeAt(pos + i).data > 0) {
+        this.display();
+        return this.move(player, pos + i);
+      }
+      */
+
+      return
     };
 
     clear () {
@@ -132,37 +158,10 @@ export class Board {
 }
 
 ////////////////////main statement basically/////////////////////////////
-var manc = new Board(12);
-manc.display();
-manc.move(1,3);
-manc.clear();
-manc.display();
+//var manc = new Board(12);
+//manc.display();
+//manc.move(1,3);
+//manc.clear();
+//manc.display();
 
 //make move() super generic, to incorporate all variations of the rules
-
-
-////////////////////////old code///////////////////////////////////////
-/*
-function createBoard() {
-  var size = 8;
-  var counter = 0;
-  var board = new SinglyList();
-  while(counter < size) {
-    board.add(4);
-    counter++;
-  }
-  return board;
-};
-
-function display(board) {
-  var size = 8;
-  var i = 1;
-  var max = size/2 + 1;
-  while(i < max) {
-    console.log(board.searchNodeAt(i).data + '  ' + board.searchNodeAt(i+4).data);
-    i++;
-  }
-}
-*/
-
-//main
