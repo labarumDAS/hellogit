@@ -125,7 +125,7 @@ export class Board {
       var secondPot = 14;
       //var max = this.sz/2;
       console.log('  ' + this.board.searchNodeAt(secondPot).data + ' ');
-      while(i < 6) {
+      while(i <= 6) {
         console.log(this.board.searchNodeAt(i).data + '  ' + this.board.searchNodeAt(secondPot-j).data);
         i++; j++;
       }
