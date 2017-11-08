@@ -1,4 +1,6 @@
 //singly linked list code from codes.tutsplus.com
+//numbering and sizing convention of board can be better,
+//think indexes of pots
 
 function Node(data) {
     this.data = data;
@@ -95,7 +97,7 @@ SinglyList.prototype.remove = function(position) {
 
 ////////////////////end linked list//////////////////////////////
 
-class Board {
+export class Board {
     constructor (sz) {
         this.sz = sz+2;
         var counter = 0;

@@ -2,7 +2,11 @@
 export function sum (x, y) { return x + y }
 export var pi = 3.141593
 
-//do I need all these node_modules?
+import { Board } from "./board.js"
 
-//const myFunction = () => console.log("linked");
-//export default myFunction;
+
+//export Board, and everything from index
+
+/////////////////////////////////////////////
+
+//do I need all these node_modules?
