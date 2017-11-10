@@ -55,7 +55,7 @@ export class BadPlayer {
 
 };
 
-
+/*
 export class PlayerA{
   constructor () {
 
@@ -82,11 +82,15 @@ export class PlayerA{
     iterate new boards and create j layers of new boards
     return i corresponding to best at bottom layer
     */
+    /*
   }
-
+*/
+/*
   masterMove (board) {
     //opening sequence
     //greatmoves, with slimmer optimized trees
   }
 
 };
+
+*/
