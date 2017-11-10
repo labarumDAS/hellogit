@@ -1,6 +1,7 @@
 //singly linked list code from codes.tutsplus.com
 //numbering and sizing convention of board can be better,
 //think indexes of pots
+//user impressions..
 
 function Node(data) {
     this.data = data;
@@ -133,24 +134,49 @@ export class Board {
     };
 
     move (player, pos) {
-      var count = this.board.searchNodeAt(pos).data;
-      var currentNode = this.board.searchNodeAt(pos);
+      console.log("player: " + player + "hole: " + pos);
+      //check bounds
+      //respond to enumerated player types, 0,1
+      //var count = this.board.searchNodeAt(pos).data;
+      var count = this.board.searchNodeAt(pos+player*7).data;
+      var currentNode = this.board.searchNodeAt(pos+player*7);
+      var track = 0;
       //(pos +i) can do it, but not good use of "next"
-      this.board.searchNodeAt(pos).data = 0;
+      this.board.searchNodeAt(pos+player*7).data = 0;
       while (count > 0) {
         currentNode = currentNode.next;
         currentNode.data +=1;
           count--;
+          track++;
+
       };
 
-      /*
-      //recurse if there beans & its on your side
-      //fix numbering convention first
-      if (currentNode.data > 0 && side(player) ) {
+      //track quite working for sinks
+      //shouldn't be able to pull from pot
+      //get rid of hardcoding, derive from size, _length
+      var currentPlayer = player;
+      var index_of_currentNode = pos + player*7 + track;
+      if(index_of_currentNode < 7 && currentPlayer == 0 && currentNode.data > 0) {
+      //recurse if ther're beans & its on your side
         this.display();
-        return this.move(player, index_of_currentNode());
+        return this.move(player, index_of_currentNode);
       }
-      */
+
+      if(index_of_currentNode == 7 && currentPlayer == 0) {
+        console.log("Sink! implement repeat turn");
+      }
+
+      else if (index_of_currentNode > 7 && index_of_currentNode < 14 && currentPlayer ==1 && currentNode.data > 0) {
+        this.display();
+        return this.move(player, index_of_currentNode %7);
+      }
+
+      if(index_of_currentNode == 14 && currentPlayer == 1) {
+        console.log("Sink! implement repeat turn");
+      }
+
+      this.clear();
+      this.display();
 
       return
     };
