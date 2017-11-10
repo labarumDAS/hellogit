@@ -1,11 +1,8 @@
-//import * as math from "./index"
-//console.log("2π = " + math.sum(math.pi, math.pi))
-//  otherApp.js
-//import { sum, pi } from "./index"
-//console.log("2π = " + sum(pi, pi))
-//http://es6-features.org/#ValueExportImport
 
-
+//game ending clause is written such that
+//if its a players turn, and their side is empty, the game ends
+//alternative, both side are empty
+//alternative, one side is empty, regardless of whose turn
 //*************************************************
 
 import { Board } from "./board"

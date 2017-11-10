@@ -1,5 +1,7 @@
 //fix hardcoding, generalize sizing
-
+//player shouldn't have to check for game end via -2,
+//shouldn't have to make a "new player" in move, repeat turn
+  //public function, move?
 export class BadPlayer {
   constructor (player) {
     this.player = player
@@ -16,8 +18,9 @@ export class BadPlayer {
       if(currentNode.data > 0) {
         var index_of_currentNode = start + track;
         if(index_of_currentNode == 7 || index_of_currentNode == 14) {
-          console.log("cant pick pot");
-          return -1;
+          //console.log("cant pick pot");
+          console.log("gameover?"); //all zeros on side
+          return -2;
         }
         //return index_of_currentNode;
         return index_of_currentNode %7;
@@ -50,4 +53,40 @@ export class BadPlayer {
       return track %7;
     };
 
-}
+};
+
+
+export class PlayerA{
+  constructor () {
+
+  }
+
+  findMove (board) {
+    //for i in board.board
+    //return index of highest
+  }
+
+  goodMove (board) {
+    for i in board.board
+      //new board after move at i
+      child[i] = new board = board.board.move(player, i);
+
+    iterate new boards and select best
+    return i corresponding to best
+  }
+
+  greatMove (board) {
+    /*
+    for i in board.board
+      new board after move at i
+    iterate new boards and create j layers of new boards
+    return i corresponding to best at bottom layer
+    */
+  }
+
+  masterMove (board) {
+    //opening sequence
+    //greatmoves, with slimmer optimized trees
+  }
+
+};

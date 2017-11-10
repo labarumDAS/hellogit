@@ -1,5 +1,7 @@
 
 //user impressions..
+//make board a singly list, not a class with one
+//or use Board member functions tactically
 
 import { BadPlayer } from "./player.js"
 import { SinglyList } from "./singlylist.js"
