@@ -3,6 +3,8 @@
 //think indexes of pots
 //user impressions..
 
+import { BadPlayer } from "./player.js"
+
 function Node(data) {
     this.data = data;
     this.next = null;
@@ -134,6 +136,8 @@ export class Board {
     };
 
     move (player, pos) {
+      if(pos == -2 ) { console.log ("gameover"); return -2; }
+      if(pos == -1 ) { console.log ("error: invalid move"); return };
       console.log("player: " + player + "hole: " + pos);
       //check bounds
       //respond to enumerated player types, 0,1
@@ -145,6 +149,8 @@ export class Board {
       this.board.searchNodeAt(pos+player*7).data = 0;
       while (count > 0) {
         currentNode = currentNode.next;
+        //not wrapping around?
+        if(currentNode == null) { currentNode = this.board.searchNodeAt(1); console.log("head?, skip"); }
         currentNode.data +=1;
           count--;
           track++;
@@ -164,6 +170,9 @@ export class Board {
 
       if(index_of_currentNode == 7 && currentPlayer == 0) {
         console.log("Sink! implement repeat turn");
+        this.display();
+        var foo = new BadPlayer(0);
+        return this.move( player , foo.findMove0(this) );
       }
 
       else if (index_of_currentNode > 7 && index_of_currentNode < 14 && currentPlayer ==1 && currentNode.data > 0) {
@@ -173,6 +182,7 @@ export class Board {
 
       if(index_of_currentNode == 14 && currentPlayer == 1) {
         console.log("Sink! implement repeat turn");
+        return
       }
 
       this.clear();
