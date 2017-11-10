@@ -40,14 +40,14 @@ export class BadPlayer {
     };
 
     findMove1(Board) {
-      var currentNode = Board.board.searchNodeAt(7);
-      var track = 7;
+      var currentNode = Board.board.searchNodeAt(8);
+      var track = 8;
       while (currentNode.data == 0) {
         currentNode = currentNode.next;
         track++;
         if(track == 14) { return -2; console.log("gameover"); }
       }
-      return track;
+      return track %7;
     };
 
 }
