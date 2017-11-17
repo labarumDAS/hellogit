@@ -44,6 +44,12 @@ export class Board {
     };
 
     move (player, pos) {
+      //if hole is empty, invalid
+      if (this.board.searchNodeAt(pos+player*7).data == 0) {
+        console.log("empty hole");
+        return
+      }
+      //if gameover
       if(pos == -2 ) { console.log ("gameover"); return -2; }
       if(pos == -1 ) { console.log ("error: invalid move"); return };
       console.log("player: " + player + "hole: " + pos);
@@ -57,16 +63,18 @@ export class Board {
       this.board.searchNodeAt(pos+player*7).data = 0;
       while (count > 0) {
         currentNode = currentNode.next;
-        //not wrapping around?
-        if(currentNode == null) { currentNode = this.board.searchNodeAt(1); console.log("head?, skip"); }
+        //wrap around
+        if(currentNode == null) {
+          currentNode = this.board.searchNodeAt(1); console.log("head?, skip");
+        }
+        //don't place in the opponents pot
         currentNode.data +=1;
           count--;
           track++;
 
       };
 
-      //track quite working for sinks
-      //shouldn't be able to pull from pot
+
       //get rid of hardcoding, derive from size, _length
       var currentPlayer = player;
       var index_of_currentNode = pos + player*7 + track;
@@ -106,12 +114,5 @@ export class Board {
       console.log(' ');
     };
 }
-
-////////////////////main statement basically/////////////////////////////
-//var manc = new Board(12);
-//manc.display();
-//manc.move(1,3);
-//manc.clear();
-//manc.display();
 
 //make move() super generic, to incorporate all variations of the rules
