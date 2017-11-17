@@ -18,12 +18,18 @@ class Tree {
   }
 
   addlayer() {
-    //verify move only lets legal moves through
+    //verify move only lets LEGAL moves through
     //need a "quiet" version of move that doesn't display board
     var keep = this.board;
     for (var i=1; i<7; i++) {
       this.child[i] = keep.move(0,i);
+//evaluation function...
+  //a non-clever option is to have move return a board object by reference
     }
+
+    console.log(this.child);
+
+    //how can you use asynchronous calls to make player decisions faster?
 
   }
 

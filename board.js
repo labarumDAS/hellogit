@@ -45,10 +45,12 @@ export class Board {
 
     move (player, pos) {
       //if hole is empty, invalid
+      /*
       if (this.board.searchNodeAt(pos+player*7).data == 0) {
         console.log("empty hole");
         return
       }
+      */
       //if gameover
       if(pos == -2 ) { console.log ("gameover"); return -2; }
       if(pos == -1 ) { console.log ("error: invalid move"); return };
@@ -65,9 +67,18 @@ export class Board {
         currentNode = currentNode.next;
         //wrap around
         if(currentNode == null) {
-          currentNode = this.board.searchNodeAt(1); console.log("head?, skip");
+           console.log("head?, skip");
+          currentNode = this.board.searchNodeAt(1);
         }
-        //don't place in the opponents pot
+        /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+        //!don't place in the opponents pot
+        /*
+        var check = currentNode.next;
+        if(check.data == null) {
+          console.log ("player 1's pot, skip");
+          currentNode = this.board.searchNodeAt(1);
+        }
+        */
         currentNode.data +=1;
           count--;
           track++;

@@ -15,7 +15,7 @@ import { BadPlayer } from "./player"
 //players are specific to a side, move function maps 1-6 to hole index
 //generalize in later iteration
 
-/*
+
 var manc = new Board(6);
 var Player1 = new BadPlayer(1);
 var Player0 = new BadPlayer(0);
@@ -38,8 +38,9 @@ while(i < max) {
   i++;
 };
 
-*/
 
+
+/*
 var manc = new Board(6);
 var Player1 = new PlayerA(1);
 var Player0 = new PlayerA(0);
@@ -62,7 +63,7 @@ while(i < max) {
   i++;
 };
 
-
+*/
 
 
 /*
