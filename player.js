@@ -55,25 +55,60 @@ export class BadPlayer {
 
 };
 
-/*
+//-----------------------------------------------------------//////////
 export class PlayerA{
-  constructor () {
-
+  constructor (player) {
+    this.player = player
   }
 
-  findMove (board) {
-    //for i in board.board
-    //return index of highest
-  }
+  findHigh(Board) {
+    //var max = (Board.board._length-2)/2;
+    var max = 7*this.player + 7;
+    //var end = this.player*max + max;
+    //var start = this.player*max+1;
+    var start = this.player*7 + 1;
+    var currentNode =Board.board.searchNodeAt(start);
+    var track = 0;
+    var high = 0;
+    while(start < max) {
+      if(currentNode.data > 0) {
+        if(high == 0) {
+          var index_of_currentNode = start + track;
+          high = index_of_currentNode;
+        }
+
+        if(currentNode.data > Board.board.searchNodeAt(high)) {
+          high = index_of_currentNode;
+        }
+
+
+        //return index_of_currentNode;
+
+      }
+      if(index_of_currentNode == 7 || index_of_currentNode == 14) {
+        //console.log("cant pick pot");
+        console.log("gameover?"); //all zeros on side
+        return -2;
+      }
+      return high %7;
+      currentNode = currentNode.next;
+      track++;
+      start++;
+    }
+  };
 
   goodMove (board) {
-    for i in board.board
+    //for i in board.board
       //new board after move at i
-      child[i] = new board = board.board.move(player, i);
+    //  child[i] = new board = board.board.move(player, i);
 
-    iterate new boards and select best
-    return i corresponding to best
+    //iterate new boards and select best
+    //return i corresponding to best
   }
+
+};
+
+/*
 
   greatMove (board) {
     /*

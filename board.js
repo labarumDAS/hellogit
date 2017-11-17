@@ -4,6 +4,7 @@
 //or use Board member functions tactically
 
 import { BadPlayer } from "./player.js"
+//import { PlayerA } from "./player.js"
 import { SinglyList } from "./singlylist.js"
 
 
