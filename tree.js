@@ -1,17 +1,23 @@
 
+import { Board } from "./board"
+import { PlayerA } from "./player.js"
+import { BadPlayer } from "./player"
+
+
 function Node(data) {
     this.data = data;
     this.next = null;
 }
 
-class tree {
+class Tree {
   constructor(board, data) {
     this.node = data;
     //up to as many children as possible moves
     //from that board state
-    this.child[] = null;
+    this.child = null;
   }
 }
 
+var koo = new Board(6);
 
-foo = new tree(board)
+var foo = new Tree(koo, 3);
